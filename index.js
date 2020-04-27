@@ -12,7 +12,8 @@ const productTemplate = fs.readFileSync("./src/product.html", "UTF-8")
 const data = fs.readFileSync(`${__dirname}/data.json`, "UTF-8")
 const dataObj = JSON.parse(data)
 
-// const slugs = dataObj.map((data) => slugify(data.productName, { lower: true }))
+const slugs = dataObj.map((data) => slugify(data.productName, { lower: true }))
+console.log(slugs)
 
 const server = http.createServer(function (req, res) {
   const reqUrl = url.parse(req.url, true)
