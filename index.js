@@ -44,5 +44,5 @@ const server = http.createServer(function (req, res) {
 })
 
 server.listen(3000, "localhost", function () {
-  console.log("Listening to requests on port 5000")
+  console.log("Listening to requests on port 3000")
 })
