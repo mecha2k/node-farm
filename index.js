@@ -12,7 +12,9 @@ const productTemplate = fs.readFileSync("./src/product.html", "UTF-8")
 const data = fs.readFileSync(`${__dirname}/data.json`, "UTF-8")
 const dataObj = JSON.parse(data)
 
-const slugs = dataObj.map((data) => slugify(data.productName, { lower: true }))
+const slugs = dataObj.map((data) =>
+  slugify(data["productName"], { lower: true })
+)
 console.log(slugs)
 
 const server = http.createServer(function (req, res) {
@@ -33,11 +35,14 @@ const server = http.createServer(function (req, res) {
     res.writeHead(200, { "Content-type": "application/json" })
     res.end(data)
   } else {
-    res.writeHead(404, { "Content-type": "text/html", "my-own-header": "hello-world" })
+    res.writeHead(404, {
+      "Content-type": "text/html",
+      "my-own-header": "hello-world",
+    })
     res.end("<h1>Page not found</h1>")
   }
 })
 
-server.listen(5000, "localhost", function () {
+server.listen(3000, "localhost", function () {
   console.log("Listening to requests on port 5000")
 })
